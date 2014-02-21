@@ -37,7 +37,7 @@ Or you can run demo directly:
 
     python -Bm playwindow.demo
 
-![screenshot](screenshot.png)
+![screenshot](http://michurin.github.io/playwindow/images/screenshot.png)
 
 API
 ===
