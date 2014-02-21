@@ -2,6 +2,7 @@
 
 
 from playwindow.events import Events
+from playwindow.image import Image
 
 
 import os
@@ -67,7 +68,7 @@ class Window(object):
         try:
             while True:
                 task = self.__queue.get_nowait()
-                #print(repr(task))
+                #print('TASK: ' + repr(task))
                 t, m, a, kv = task
                 if t == 'canvas':
                     getattr(self.__canvas, m)(*a, **kv)
@@ -110,6 +111,9 @@ class Window(object):
 
     def text(self, *a, **kv):
         self.__task('canvas', 'create_text', a, kv)
+
+    def image(self, *a, **kv):
+        self.__task('canvas', 'create_image', a, kv)
 
     def move(self, *a):
         self.__task('canvas', 'move', a, {})
@@ -158,12 +162,17 @@ class Window(object):
     def buttons(self):
         return self.__events.buttons
 
+    # tools
+
+    def create_image(self, *a, **kv):
+        return Image(*a, **kv)
+
 
 def setup():
     lock = threading.Lock()
     lock.acquire()
     threading.Thread(target=Window, args=(lock,), daemon=True).start()
-    with lock: pass
+    with lock: pass # main thread must wait for slave
 
 
 setup()
