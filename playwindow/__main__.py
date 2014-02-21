@@ -13,7 +13,8 @@ def scope():
             pass
     atexit.register(readline.write_history_file, histfile)
     readline.parse_and_bind("tab: complete")
-    print('''Try:
+    print('''\001\033[1;33m\002Welcome to playwindow\001\033[0m\002
+Try:
 -----------------------------
 \001\033[32m\002>>>\001\033[0m\002 win.background('#444444')
 \001\033[32m\002>>>\001\033[0m\002 w, h = win.size
