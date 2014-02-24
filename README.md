@@ -58,3 +58,5 @@ Author
 ======
 
 I'm open for feedback. You can contact me via email <a.michurin@gmail.com>.
+
+-- Alexey

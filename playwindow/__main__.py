@@ -1,6 +1,9 @@
 # coding: utf-8
 
 
+from playwindow import __version__
+
+
 def scope():
     import sys, os, readline, errno, atexit, rlcompleter
     sys.ps1 = '\001\033[32;1m\002>>>\001\033[0m\002 '
@@ -13,7 +16,7 @@ def scope():
             pass
     atexit.register(readline.write_history_file, histfile)
     readline.parse_and_bind("tab: complete")
-    print('''\001\033[1;33m\002Welcome to playwindow\001\033[0m\002
+    print('''\001\033[1;33m\002Welcome to playwindow %s\001\033[0m\002
 Try:
 -----------------------------
 \001\033[32m\002>>>\001\033[0m\002 win.background('#444444')
@@ -26,8 +29,9 @@ Try:
 \001\033[32m\002>>>\001\033[0m\002 win.config('all', width=8, outline='#00ff00')
 \001\033[32m\002>>>\001\033[0m\002 win.delete('all')
 \001\033[32m\002>>>\001\033[0m\002 demo_all()
+\001\033[32m\002>>>\001\033[0m\002 help(win)
 -----------------------------
-''')
+''' % __version__)
 
 
 scope()

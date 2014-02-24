@@ -23,8 +23,8 @@ def demo_setup():
     win.delete('all')
 
 
-def demo_draw():
-    print('- demo_draw()')
+def demo_draw_basics():
+    print('- demo_draw_basics()')
     w, h = win.size
     win.line(20, 20, w - 20, h - 20, width=3, fill='#440044', tags=('my_line',))
     win.oval(50, 50, 150, 250, width=0, fill='#444444', tags=('my_ovals',))
@@ -90,6 +90,126 @@ def demo_draw():
     win.event_clear()
     e = win.event
 
+    win.delete('all')
+
+
+def demo_draw_shapes():
+    print('- demo_draw_shapes()')
+    win.text(10, 10, fill='#ffffff', text='Drawing shapes.', anchor='nw', tags=('label',))
+    win.event_clear()
+    e = win.event
+    win.delete('all')
+
+    w, h = win.size
+    y1 = 60
+    y2 = h - 30
+    x = 30
+    step = (w - x * 2) / 17
+    win.line(x, y1, x, y2, fill='#880088', width=3)
+    x += step
+    x += step
+    win.line(x, y1, x, y2, fill='#880088', width=3, arrow='first')
+    x += step
+    win.line(x, y1, x, y2, fill='#880088', width=3, arrow='last')
+    x += step
+    win.line(x, y1, x, y2, fill='#880088', width=3, arrow='both')
+    x += step
+    win.line(x, y1, x, y2, fill='#880088', width=3, arrow='first',
+        arrowshape=(20, 30, 10))
+    x += step
+    x += step
+    win.line(x, y1, x, y2, fill='#880088', width=15, capstyle='butt')
+    x += step
+    win.line(x, y1, x, y2, fill='#880088', width=15, capstyle='projecting')
+    x += step
+    win.line(x, y1, x, y2, fill='#880088', width=15, capstyle='round')
+    x += step
+    x += step
+    win.line(x, y1, x, y2, fill='#880088', width=3, dash=(5,))
+    x += step
+    win.line(x, y1, x, y2, fill='#880088', width=3, dash=(5, 10))
+    x += step
+    win.line(x, y1, x, y2, fill='#880088', width=3, dash=(5, 5, 2, 5))
+    x += step
+    win.line(x, y1, x, y2, fill='#880088', width=3, dash=(5, 2, 2, 2, 2, 2))
+    x += step
+    win.line(x, y1, x, y2, fill='#880088', width=3, dash=(5, 2, 2, 2, 2, 2), dashoffset=2)
+    x += step
+    x += step
+    win.line(x, y1, x, y2, fill='#880088', width=10,
+        dash=(6,), arrow='first', arrowshape=(20, 20, 10), capstyle='round')
+
+    win.text(10, 10, fill='#999999', anchor='nw',
+        text='Lines.\nArrows. Custom arrows.\nCapstyle.\nDash.')
+    win.event_clear()
+    e = win.event
+    win.delete('all')
+
+    w, h = win.size
+    y1 = 60
+    y2 = h - 30
+    x1 = 30
+    x2 = x1 + (y2 - y1) / 2
+    step = (w - x2 - x1) / 2
+    win.arc(x1, y1, x2, y2, fill='#880088', start=180, extent=45)
+    x1 += step
+    x2 += step
+    win.arc(x1, y1, x2, y2, fill='#880088', start=0, extent=135,
+       outline='#ff00ff', width=5)
+    x1 += step
+    x2 += step
+    win.arc(x1, y1, x2, y2, fill='#880088', start=-135, extent=180,
+       outline='#ffffff', width=2, dash=(5, 10))
+
+    win.text(10, 10, fill='#999999', anchor='nw', text='Arcs.')
+    win.event_clear()
+    e = win.event
+    win.delete('all')
+
+    w, h = win.size
+    xo, yo = w // 2, h // 2
+    r = min(xo, yo)/2 - 20
+    step = (r - 10)/4
+    win.polygon(
+        xo + r, yo - r - r,
+        xo + r + r, yo,
+        xo + r, yo + r + r,
+        xo - r - r, yo + r + r,
+        xo - r - r, yo - r - r,
+        outline='#888888', smooth='bezier', width=3, fill='#558855'
+    )
+    r -= step
+    r -= step
+    win.polygon(
+        xo + r, yo - r - r,
+        xo + r + r, yo,
+        xo + r, yo + r + r,
+        xo - r - r, yo + r + r,
+        xo - r - r, yo - r - r,
+        outline='#888888', joinstyle='round', width=10, fill='#555555'
+    )
+    r -= step
+    win.polygon(
+        xo + r, yo - r - r,
+        xo + r + r, yo,
+        xo + r, yo + r + r,
+        xo - r - r, yo + r + r,
+        xo - r - r, yo - r - r,
+        outline='#888888', width=10, fill='#333333'
+    )
+    r -= step
+    win.polygon(
+        xo + r, yo - r - r,
+        xo + r + r, yo,
+        xo + r, yo + r + r,
+        xo - r - r, yo + r + r,
+        xo - r - r, yo - r - r,
+        outline='#888888', width=1, fill='#111111'
+    )
+
+    win.text(10, 10, fill='#999999', anchor='nw', text='Polygons and bezier.')
+    win.event_clear()
+    e = win.event
     win.delete('all')
 
 
@@ -353,10 +473,11 @@ def demo_all():
     print('View source code here: %s' % __file__)
     intro('Welcome!')
     demo_setup()
-    demo_draw()
+    demo_draw_basics()
+    demo_draw_shapes()
     demo_bitmaps()
     demo_events()
-    intro('See you there!')
+    intro('See you here!')
 
 
 if __name__ == '__main__':
