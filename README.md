@@ -1,7 +1,7 @@
 playwindow
 ==========
 
-This tool dedicated to all better and to make programming easy and
+This tool dedicated to all better and to make GUI programming easy and
 funny for kids and for peoples who never programming before. It allows
 you to get noticeable result extremely quickly and move forward with pleasure.
 
